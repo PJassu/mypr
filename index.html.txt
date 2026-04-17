@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pjassu's Lab - DNA & Logic</title>
+    <style>
+        body { background-color: #0a0a0a; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        
+        /* Quiz Styling */
+        .quiz-container { background: #1a1a1a; padding: 20px; border-radius: 10px; border: 1px solid #333; margin-bottom: 50px; text-align: center; z-index: 10; }
+        input { padding: 10px; border-radius: 5px; border: none; }
+        button { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #2980b9; }
+
+        /* DNA Styling */
+        .dna { position: relative; width: 160px; height: 360px; transform-style: preserve-3d; animation: rotate 8s linear infinite; }
+        .strand {
+            position: absolute; width: 100%; height: 6px;
+            background: linear-gradient(90deg, #3498db 15%, #555 15%, #555 85%, #e74c3c 85%);
+            top: var(--top); transform: rotateY(var(--rot));
+        }
+
+        @keyframes rotate { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h2>🧠 Logic Puzzle</h2>
+        <p>What has keys but can't open locks?</p>
+        <input type="text" id="answer" placeholder="Your answer...">
+        <button onclick="check()">Check Answer</button>
+        <p id="result"></p>
+    </div>
+
+    <div class="dna" id="dna-strand">
+        <div class="strand" style="--top: 20px; --rot: 0deg;"></div>
+        <div class="strand" style="--top: 50px; --rot: 30deg;"></div>
+        <div class="strand" style="--top: 80px; --rot: 60deg;"></div>
+        <div class="strand" style="--top: 110px; --rot: 90deg;"></div>
+        <div class="strand" style="--top: 140px; --rot: 120deg;"></div>
+        <div class="strand" style="--top: 170px; --rot: 150deg;"></div>
+        <div class="strand" style="--top: 200px; --rot: 180deg;"></div>
+        <div class="strand" style="--top: 230px; --rot: 210deg;"></div>
+        <div class="strand" style="--top: 260px; --rot: 240deg;"></div>
+        <div class="strand" style="--top: 290px; --rot: 270deg;"></div>
+        <div class="strand" style="--top: 320px; --rot: 300deg;"></div>
+        <div class="strand" style="--top: 350px; --rot: 330deg;"></div>
+    </div>
+
+    <script>
+        function check() {
+            let val = document.getElementById('answer').value.toLowerCase().trim();
+            let res = document.getElementById('result');
+            if (val === "piano") {
+                res.innerHTML = "✅ Correct! Look at the DNA spin!";
+                res.style.color = "#2ecc71";
+            } else {
+                res.innerHTML = "❌ Not quite! Try again.";
+                res.style.color = "#e74c3c";
+            }
+        }
+    </script>
+</body>
+</html>
