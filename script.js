@@ -32,12 +32,14 @@ function checkAnswer() {
 
 // Generate DNA strands automatically
 const dna = document.getElementById('dna');
-for(let i=0; i<15; i++) {
+// Generate 25 rungs for a longer, more realistic helix
+for(let i=0; i<25; i++) {
     let div = document.createElement('div');
     div.className = 'strand';
-    div.style.top = (i * 20) + 'px';
-    div.style.transform = `rotateY(${i * 25}deg)`;
+    div.style.setProperty('--top', (i * 18) + 'px');
+    div.style.setProperty('--rot', (i * 20) + 'deg'); // 20 degree shift creates the spiral
     dna.appendChild(div);
 }
+
 
 loadPuzzle();
